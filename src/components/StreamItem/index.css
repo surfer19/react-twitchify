@@ -1,0 +1,63 @@
+.card-img-top {
+    width: 100%;
+    height: 14vw;
+    object-fit: cover;
+}
+.card-body {
+    color: #e8e8e8;    
+    padding: 0.7rem;
+}
+
+.card {
+    background: #ffffff29;
+    transition: all .4s ease-in-out;
+    min-height: 100%;
+    border: 0!important;
+}
+.card:hover {
+    transform: scale(1.02);
+}
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+div > a:hover {
+    text-decoration: none;
+}
+
+.overlay-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ffffff4d;
+    height: 3.1rem;
+    width: 100%;
+}
+.overlay-nav > img {
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+}
+
+.card-img-overlay > img {    
+    right: 9px;
+    top: 9px;
+    position: absolute;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.card-subtitle {
+    font-size: 0.8rem;
+}
+
+.pill, .pill:hover{
+    color: white;
+    padding: 5px 9px;
+    margin: 2px 2px;
+    display: inline-block;
+}
+
+.radius {
+    border-radius: 5px;
+}
