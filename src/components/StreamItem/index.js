@@ -30,7 +30,11 @@ const TwitchItem = (props) => {
             <Card className="shadow">
                 <div className="card-img-overlay">                
                     <img src={props.stream.channel.logo} width="45px" alt="img"></img>
-                </div>
+                    <span className="viewers">
+                        <strong>{props.stream.viewers} </strong> 
+                        viewers
+                    </span>
+                </div>                
                 <CardImg top width="100%" src={props.stream.preview.medium} alt="Card image cap" />
                 <CardBody>
                     <CardTitle>

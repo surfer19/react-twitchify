@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import StreamItem from "../StreamItem"
 import InfiniteScroll from "react-infinite-scroller";
 import "./index.css"
-import { hot } from 'react-hot-loader/root'
+// import { hot } from 'react-hot-loader/root'
 import { selectUniqueProfessions, selectGnomesByProfession } from "./selectors"
 import { fetchAllStreams, fetchfilteredStreams } from '../../redux/StreamListActions';
 import { Spinner, FormGroup, Input} from 'reactstrap';
@@ -53,19 +53,7 @@ class StreamList extends React.Component {
     render() {
         if(this.props.allStreams.length > 0) {
             return (
-                    <div className="px-3">
-                        <div className="row justify-content-end">
-                            <div className="col col-lg-4">
-                                {/* <FormGroup className="mt-4">
-                                    <Input type="select" defaultValue={'default'} name="select" onChange={(e) => this.handleChange(this.props, e)}>
-                                        <option value="default" key={0}>Filter Streams by job</option>
-                                        {this.props.jobTypes.map((type, i) =>
-                                            <option value={type} key={i+1}>{type}</option>
-                                        )}
-                                    </Input>
-                                </FormGroup> */}
-                            </div>
-                        </div>
+                    <div className="px-3 mt-5">                        
                         <InfiniteScroll
                             className="row"
                             pageStart={0}
@@ -118,9 +106,10 @@ const mapStateToProps = state => {
 }
 
 
-export default process.env.NODE_ENV === "development"  
-    ? hot(connect(mapStateToProps, mapDispatchToProps)(StreamList)) 
-    : connect(mapStateToProps, mapDispatchToProps)(StreamList);
+// export default process.env.NODE_ENV === "development"  
+    // ? hot(connect(mapStateToProps, mapDispatchToProps)(StreamList)) 
+    // :
+     export default connect(mapStateToProps, mapDispatchToProps)(StreamList);
 
 StreamList.propTypes = {
     allStreams: PropTypes.arrayOf(

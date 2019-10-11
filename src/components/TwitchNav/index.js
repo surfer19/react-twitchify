@@ -7,6 +7,7 @@ import {
   Nav,
   NavItem,
   NavLink } from 'reactstrap';
+import './index.css'
 
 export default class TwitchNav extends React.Component {
   constructor(props) {
@@ -25,21 +26,21 @@ export default class TwitchNav extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <div className="container">
-          <NavbarBrand>            
-             
-          </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>              
-              <NavItem>
-                <NavLink href="#" target="_blank">GitHub</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
+        <Navbar dark expand="md">
+          <div className="container-fluid">
+            <NavbarBrand href="#">
+              TWITCHIFY
+            </NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>              
+                <NavItem>
+                  <NavLink href="#" target="_blank">GitHub</NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
           </div>
-        </Navbar>        
+        </Navbar>
       </div>
     );
   }

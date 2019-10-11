@@ -1,0 +1,21 @@
+.navbar {
+    top: 0;
+    background: #272727f0;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    height: 45px
+}
+
+.navbar-dark .navbar-brand {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background: #272727f0;
+    }
+    .navbar {
+        height: 70px;
+    }
+}
