@@ -5,9 +5,9 @@ import axios from "axios";
  */
 
 // fetch streams
-export const FETCH_STREAMS_BEGIN = "FETCH_STREAMS_BEGIN"; // TODO: loading
+export const FETCH_STREAMS_BEGIN = "FETCH_STREAMS_BEGIN";
 export const FETCH_STREAMS_SUCCESS = "FETCH_STREAMS_SUCCESS";
-export const FETCH_STREAMS_FAILURE = "FETCH_STREAMS_FAILURE"; //TODO:
+export const FETCH_STREAMS_FAILURE = "FETCH_STREAMS_FAILURE"; 
 
 // filtered
 export const FETCH_FILTERED_STREAMS_SUCCESS = "FETCH_FILTERED_STREAMS_SUCCESS";
@@ -17,10 +17,10 @@ export const FETCH_FILTERED_STREAMS_SUCCESS = "FETCH_FILTERED_STREAMS_SUCCESS";
  */
 
 // fetch streams
-export const fetchAllStreams = () => {
-    return async dispatch => {
-        try {
-            dispatch(fetchAllStreamsBegin())
+export const fetchAllStreams = (offset) => {    
+    return async (dispatch, getState) => {
+        try {            
+            dispatch(fetchAllStreamsBegin())            
             // for testing purpose
             // setTimeout(async() => {
             // call api
@@ -28,15 +28,14 @@ export const fetchAllStreams = () => {
                 headers: {
                     'Client-ID': 'e58bb9u3nmtqp4ikxaz1qg05kelpy7l',
                     'Accept': 'application/vnd.twitchtv.v5+json?api_version=5'
+                },
+                params: {
+                    limit: 20,
+                    offset: offset
                 }
             }
             )).data;
-            // TODO: parse response with object destruction?
-            console.log('RESPONSE type=', typeof response)
-            console.log('RESPONSE streams type=', Array.isArray(response.streams))
-            console.log('RESPONSE streams type=', response.streams[0])
-            console.log('RESPONSE=', response)
-            
+            // TODO: parse response with object destruction?            
             // const response = mockData;
             // success
             dispatch(fetchAllStreamsSuccess(response))

@@ -14,42 +14,41 @@ class StreamList extends React.Component {
         super(props);
         this.state = { 
             loadMore: true,
-            streamsToLoad: []
+            streamsToLoad: [],
+            loadedStreams: 0,
+            canLoad: true
         }
     }
-    componentDidMount() {
-        this.props.fetchAllStreams();
+    componentDidMount() {        
+        this.loadMoreStreams(0)        
     }
 
     loadMoreStreams() {
-        const toLoad = this.state.streamsToLoad.length
-        const baseStreams =  this.props.filteredStreams.length > 0 ? this.props.filteredStreams : this.props.allStreams 
-        const nextNotLoadedItems = baseStreams.slice( // slice 20 more items
-            toLoad,
-            toLoad + 20
-        );
-
-        if (toLoad >= baseStreams.length) {
-            this.setState({
-                streamsToLoad: this.state.streamsToLoad,
-                loadMore: false
-            });
-            return;
-        }
+        // prevents async api duplicity calls
         this.setState({
-            streamsToLoad: this.state.streamsToLoad.concat(nextNotLoadedItems),
-            loadMore: true
-        });
-    }
-
-    handleChange(props, e) {
-        const gnomesByProfession = selectGnomesByProfession(props, e.target.value)
-        this.props.fetchfilteredStreams(gnomesByProfession)
-        // reset loaded gnomes invoke loadMoreStreams()        
-        this.setState({
-            streamsToLoad: []
+            loadMore:false
         })
+        
+        this.props.fetchAllStreams(this.state.loadedStreams).then(() => {
+            console.log('OFSET LOADMORE', this.state.loadedStreams)
+            const nextStreamsToLoad = this.props.allStreams;            
+            this.setState({
+                streamsToLoad: this.state.streamsToLoad.concat(nextStreamsToLoad),
+                loadMore: true,
+                loadedStreams: this.state.loadedStreams + 20,
+                canLoad: true
+            })
+        })        
     }
+
+    // handleChange(props, e) {
+    //     const gnomesByProfession = selectGnomesByProfession(props, e.target.value)
+    //     this.props.fetchfilteredStreams(gnomesByProfession)
+    //     // reset loaded gnomes invoke loadMoreStreams()        
+    //     this.setState({
+    //         streamsToLoad: []
+    //     })
+    // }
     
     render() {
         if(this.props.allStreams.length > 0) {
@@ -72,18 +71,19 @@ class StreamList extends React.Component {
                             pageStart={0}
                             loadMore={this.loadMoreStreams.bind(this)}
                             hasMore={this.state.loadMore}
-                            useWindow={true}
-                            threshold={200}
+                            // useWindow={true}
+                            threshold={800}
                             loader={
                                 <div className="loader" key={0}>
                                     <Spinner color="warning" key="0" className="spinner"/>                                
                                 </div>}>
-                                
-                            {this.state.streamsToLoad.map((stream, i) => (
+
+                                {this.state.streamsToLoad.map((stream, i) => (
                                 <div className="col-12 col-sm-6 col-md-4 col-lg-4 col-xxl-3 mt-4" key={i}>
                                     <StreamItem stream={stream}/>
                                 </div>
-                            ))}          
+                                ))
+                             }
                         </InfiniteScroll>
                     </div>
             )
@@ -105,7 +105,7 @@ class StreamList extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchAllStreams: () => dispatch(fetchAllStreams()),
+    fetchAllStreams: (offset) => dispatch(fetchAllStreams(offset)),
     // fetchfilteredStreams: (streams) => dispatch(fetchfilteredStreams(streams))
 })
 

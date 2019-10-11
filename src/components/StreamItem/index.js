@@ -24,8 +24,9 @@ const TwitchItem = (props) => {
             )
         })
     }
+
     return (
-        <a href={props.stream.channel.url} target="_blank">
+        <a href={props.stream.channel.url} target="_blank" rel="noopener noreferrer">
             <Card className="shadow">
                 <div className="card-img-overlay">                
                     <img src={props.stream.channel.logo} width="45px" alt="img"></img>
