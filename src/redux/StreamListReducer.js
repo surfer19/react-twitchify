@@ -1,13 +1,11 @@
 import { 
     FETCH_STREAMS_BEGIN, 
     FETCH_STREAMS_SUCCESS, 
-    FETCH_STREAMS_FAILURE ,
-    FETCH_FILTERED_STREAMS_SUCCESS
+    FETCH_STREAMS_FAILURE
 } from "./StreamListActions";
 
 const defaultState = {
-    allStreams: [],
-    filteredStreams: []
+    fetchedStreams: []
 }
 
 const streamListReducer = (state = defaultState, action) => {
@@ -19,16 +17,11 @@ const streamListReducer = (state = defaultState, action) => {
         case FETCH_STREAMS_SUCCESS:
             return {
                 ...state,
-                allStreams: action.payload
+                fetchedStreams: action.payload
             }
         case FETCH_STREAMS_FAILURE:
             return {
                 ...state
-            }
-        case FETCH_FILTERED_STREAMS_SUCCESS: 
-            return {
-                ...state,
-                filteredStreams: action.payload
             }
         default: 
             return state

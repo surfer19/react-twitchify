@@ -1,29 +1,13 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import {
-  Card, CardImg, CardText, CardBody,
+  Card, CardImg, CardBody,
   CardTitle, CardSubtitle
 } from 'reactstrap';
 import Truncate from 'react-truncate';
-
-
 // custom css
 import './index.css'
 
 const TwitchItem = (props) => {
-
-    const getProfessions = props => {
-        const gnomeProfs = props.stream.professions
-        const profLength = gnomeProfs.length;
-        if (profLength === 0) return 'None'
-        return gnomeProfs.map((prof, i) => {
-            return (
-                <span key={i}> {prof}
-                    { profLength !== i + 1 ? ', ' : null}
-                </span>
-            )
-        })
-    }
 
     return (
         <a href={props.stream.channel.url} target="_blank" rel="noopener noreferrer">
@@ -47,10 +31,7 @@ const TwitchItem = (props) => {
                     </CardSubtitle>
                     <CardSubtitle className="my-1">
                         {props.stream.game}
-                    </CardSubtitle>
-                    <CardText>
-                        {/* Professions: {getProfessions(props)}  */}
-                    </CardText>
+                    </CardSubtitle>                    
                 </CardBody>
             </Card>
         </a>

@@ -9,20 +9,15 @@ export const FETCH_STREAMS_BEGIN = "FETCH_STREAMS_BEGIN";
 export const FETCH_STREAMS_SUCCESS = "FETCH_STREAMS_SUCCESS";
 export const FETCH_STREAMS_FAILURE = "FETCH_STREAMS_FAILURE"; 
 
-// filtered
-export const FETCH_FILTERED_STREAMS_SUCCESS = "FETCH_FILTERED_STREAMS_SUCCESS";
-
 /*
  * FUNCTIONS
  */
 
 // fetch streams
-export const fetchAllStreams = (offset) => {    
-    return async (dispatch, getState) => {
+export const fetchMoreStreams = (offset) => {    
+    return async (dispatch) => {
         try {            
-            dispatch(fetchAllStreamsBegin())            
-            // for testing purpose
-            // setTimeout(async() => {
+            dispatch(fetchMoreStreamsBegin())            
             // call api
             const response = (await axios.get("https://api.twitch.tv/kraken/streams/", {
                 headers: {
@@ -35,46 +30,31 @@ export const fetchAllStreams = (offset) => {
                 }
             }
             )).data;
-            // TODO: parse response with object destruction?            
-            // const response = mockData;
-            // success
-            dispatch(fetchAllStreamsSuccess(response))
-            // }, 1000)
+
+            dispatch(fetchMoreStreamsSuccess(response))
+
         } catch (err) {
-            dispatch(fetchAllStreamsFailure(err))
+            dispatch(fetchMoreStreamsFailure(err))
         }
     }
 }
 
-function fetchAllStreamsBegin() {
+function fetchMoreStreamsBegin() {
     return  {
         type: FETCH_STREAMS_BEGIN
     }
 }
 
-function fetchAllStreamsSuccess(responseData) {
+function fetchMoreStreamsSuccess(responseData) {
     return {
         type: FETCH_STREAMS_SUCCESS,
         payload: responseData.streams
     }
 }
 
-function fetchAllStreamsFailure(err) {
+function fetchMoreStreamsFailure(err) {
     return {
         type: FETCH_STREAMS_FAILURE,
         error: err
-    }
-}
-
-export const fetchfilteredStreams = (streams) => {
-    return async dispatch => {
-        dispatch(fetchfilteredStreamsSuccess(streams))
-    }
-}
-
-function fetchfilteredStreamsSuccess(streams) {
-    return {
-        type: FETCH_FILTERED_STREAMS_SUCCESS,
-        payload: streams
     }
 }

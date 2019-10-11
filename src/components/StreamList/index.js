@@ -1,13 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from "react-redux"
 import StreamItem from "../StreamItem"
 import InfiniteScroll from "react-infinite-scroller";
 import "./index.css"
 // import { hot } from 'react-hot-loader/root'
-import { selectUniqueProfessions, selectGnomesByProfession } from "./selectors"
-import { fetchAllStreams, fetchfilteredStreams } from '../../redux/StreamListActions';
-import { Spinner, FormGroup, Input} from 'reactstrap';
+import { fetchMoreStreams } from '../../redux/StreamListActions';
+import { Spinner } from 'reactstrap';
 
 class StreamList extends React.Component {
     constructor(props) {
@@ -15,8 +13,7 @@ class StreamList extends React.Component {
         this.state = { 
             loadMore: true,
             streamsToLoad: [],
-            loadedStreams: 0,
-            canLoad: true
+            loadedStreams: 0
         }
     }
     componentDidMount() {        
@@ -29,37 +26,23 @@ class StreamList extends React.Component {
             loadMore:false
         })
         
-        this.props.fetchAllStreams(this.state.loadedStreams).then(() => {
-            console.log('OFSET LOADMORE', this.state.loadedStreams)
-            const nextStreamsToLoad = this.props.allStreams;            
+        this.props.fetchMoreStreams(this.state.loadedStreams).then(() => {            
             this.setState({
-                streamsToLoad: this.state.streamsToLoad.concat(nextStreamsToLoad),
+                streamsToLoad: this.state.streamsToLoad.concat(this.props.fetchedStreams),
                 loadMore: true,
-                loadedStreams: this.state.loadedStreams + 20,
-                canLoad: true
+                loadedStreams: this.state.loadedStreams + 20
             })
         })        
-    }
-
-    // handleChange(props, e) {
-    //     const gnomesByProfession = selectGnomesByProfession(props, e.target.value)
-    //     this.props.fetchfilteredStreams(gnomesByProfession)
-    //     // reset loaded gnomes invoke loadMoreStreams()        
-    //     this.setState({
-    //         streamsToLoad: []
-    //     })
-    // }
-    
+    }    
     render() {
-        if(this.props.allStreams.length > 0) {
+        if(this.props.fetchedStreams.length > 0) {
             return (
                     <div className="px-3 mt-5">                        
                         <InfiniteScroll
                             className="row"
                             pageStart={0}
                             loadMore={this.loadMoreStreams.bind(this)}
-                            hasMore={this.state.loadMore}
-                            // useWindow={true}
+                            hasMore={this.state.loadMore}                            
                             threshold={800}
                             loader={
                                 <div className="loader" key={0}>
@@ -93,36 +76,16 @@ class StreamList extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchAllStreams: (offset) => dispatch(fetchAllStreams(offset)),
-    // fetchfilteredStreams: (streams) => dispatch(fetchfilteredStreams(streams))
+    fetchMoreStreams: (offset) => dispatch(fetchMoreStreams(offset)),    
 })
 
 const mapStateToProps = state => {
     return {
-        allStreams: state.streamListReducer.allStreams,
-        filteredStreams: state.streamListReducer.filteredStreams
-        // jobTypes: selectUniqueProfessions(state)
+        fetchedStreams: state.streamListReducer.fetchedStreams,                
     }
 }
-
 
 // export default process.env.NODE_ENV === "development"  
     // ? hot(connect(mapStateToProps, mapDispatchToProps)(StreamList)) 
     // :
-     export default connect(mapStateToProps, mapDispatchToProps)(StreamList);
-
-StreamList.propTypes = {
-    allStreams: PropTypes.arrayOf(
-        PropTypes.shape({
-            // id: PropTypes.number.isRequired,
-            // name: PropTypes.string.isRequired,
-            // thumbnail: PropTypes.string.isRequired,
-            // age: PropTypes.number.isRequired,
-            // weight: PropTypes.number.isRequired,
-            // height: PropTypes.number.isRequired,
-            // hair_color: PropTypes.string.isRequired,
-            // professions: PropTypes.arrayOf(PropTypes.string),
-            // friends: PropTypes.arrayOf(PropTypes.string)
-        })
-    )
-}
+export default connect(mapStateToProps, mapDispatchToProps)(StreamList);
