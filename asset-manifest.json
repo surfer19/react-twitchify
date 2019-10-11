@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/react-twitchify/static/css/main.b7dce744.chunk.css",
-    "main.js": "/react-twitchify/static/js/main.adc514b4.chunk.js",
-    "main.js.map": "/react-twitchify/static/js/main.adc514b4.chunk.js.map",
+    "main.css": "/react-twitchify/static/css/main.e273df41.chunk.css",
+    "main.js": "/react-twitchify/static/js/main.271a52cb.chunk.js",
+    "main.js.map": "/react-twitchify/static/js/main.271a52cb.chunk.js.map",
     "runtime-main.js": "/react-twitchify/static/js/runtime-main.d5dc8f35.js",
     "runtime-main.js.map": "/react-twitchify/static/js/runtime-main.d5dc8f35.js.map",
     "static/css/2.510409cd.chunk.css": "/react-twitchify/static/css/2.510409cd.chunk.css",
-    "static/js/2.02285ab0.chunk.js": "/react-twitchify/static/js/2.02285ab0.chunk.js",
-    "static/js/2.02285ab0.chunk.js.map": "/react-twitchify/static/js/2.02285ab0.chunk.js.map",
+    "static/js/2.2aabff03.chunk.js": "/react-twitchify/static/js/2.2aabff03.chunk.js",
+    "static/js/2.2aabff03.chunk.js.map": "/react-twitchify/static/js/2.2aabff03.chunk.js.map",
     "index.html": "/react-twitchify/index.html",
-    "precache-manifest.2b01ca23a271b0b78a14faa5b9125775.js": "/react-twitchify/precache-manifest.2b01ca23a271b0b78a14faa5b9125775.js",
+    "precache-manifest.7c14e9a03b6628e32745b70e9552df32.js": "/react-twitchify/precache-manifest.7c14e9a03b6628e32745b70e9552df32.js",
     "service-worker.js": "/react-twitchify/service-worker.js",
     "static/css/2.510409cd.chunk.css.map": "/react-twitchify/static/css/2.510409cd.chunk.css.map",
-    "static/css/main.b7dce744.chunk.css.map": "/react-twitchify/static/css/main.b7dce744.chunk.css.map"
+    "static/css/main.e273df41.chunk.css.map": "/react-twitchify/static/css/main.e273df41.chunk.css.map"
   }
 }
