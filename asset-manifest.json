@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.b7dce744.chunk.css",
-    "main.js": "/static/js/main.c7ccac09.chunk.js",
-    "main.js.map": "/static/js/main.c7ccac09.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.f136a7a1.js",
-    "runtime-main.js.map": "/static/js/runtime-main.f136a7a1.js.map",
-    "static/css/2.510409cd.chunk.css": "/static/css/2.510409cd.chunk.css",
-    "static/js/2.ef5e1973.chunk.js": "/static/js/2.ef5e1973.chunk.js",
-    "static/js/2.ef5e1973.chunk.js.map": "/static/js/2.ef5e1973.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.22b66f00710338b07ccf374f27397178.js": "/precache-manifest.22b66f00710338b07ccf374f27397178.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.510409cd.chunk.css.map": "/static/css/2.510409cd.chunk.css.map",
-    "static/css/main.b7dce744.chunk.css.map": "/static/css/main.b7dce744.chunk.css.map"
+    "main.css": "/react-twitchify/static/css/main.b7dce744.chunk.css",
+    "main.js": "/react-twitchify/static/js/main.4236cdf2.chunk.js",
+    "main.js.map": "/react-twitchify/static/js/main.4236cdf2.chunk.js.map",
+    "runtime-main.js": "/react-twitchify/static/js/runtime-main.d5dc8f35.js",
+    "runtime-main.js.map": "/react-twitchify/static/js/runtime-main.d5dc8f35.js.map",
+    "static/css/2.510409cd.chunk.css": "/react-twitchify/static/css/2.510409cd.chunk.css",
+    "static/js/2.ef5e1973.chunk.js": "/react-twitchify/static/js/2.ef5e1973.chunk.js",
+    "static/js/2.ef5e1973.chunk.js.map": "/react-twitchify/static/js/2.ef5e1973.chunk.js.map",
+    "index.html": "/react-twitchify/index.html",
+    "precache-manifest.2f52020f55b5bfedce25a79c235ece5d.js": "/react-twitchify/precache-manifest.2f52020f55b5bfedce25a79c235ece5d.js",
+    "service-worker.js": "/react-twitchify/service-worker.js",
+    "static/css/2.510409cd.chunk.css.map": "/react-twitchify/static/css/2.510409cd.chunk.css.map",
+    "static/css/main.b7dce744.chunk.css.map": "/react-twitchify/static/css/main.b7dce744.chunk.css.map"
   }
 }
